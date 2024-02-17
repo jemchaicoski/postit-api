@@ -36,14 +36,17 @@ namespace PostitWebAPI.Repositories
             if (postitById == null)
                 throw new Exception($"GetPostitById: {id} was not found");
 
-            postitById = postit;
+            postitById.Title = postit.Title;
+            postitById.Text = postit.Text;
+            postitById.IsFavorite = postit.IsFavorite;
+            postitById.IsFinished = postit.IsFinished;
 
             _databaseContext.Update(postitById);
             await _databaseContext.SaveChangesAsync();
 
             return postitById;
         }
-        public async Task<bool> DeletePostit(Guid id)
+        public async Task<bool> DeletePostit(Postit postit, Guid id)
         {
             Postit postitById = await GetPostitById(id);
 

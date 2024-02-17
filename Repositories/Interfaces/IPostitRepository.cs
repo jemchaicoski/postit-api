@@ -8,7 +8,7 @@ namespace PostitWebAPI.Repositories.Interfaces
         Task<Postit> GetPostitById(Guid id);
         Task<Postit> AddPostit(Postit postit);
         Task<Postit> UpdatePostit(Postit postit, Guid id);
-        Task<bool> DeletePostit(Guid id);
+        Task<bool> DeletePostit(Postit postit, Guid id);
 
     }
 }
